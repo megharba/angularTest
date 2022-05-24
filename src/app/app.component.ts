@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Statistique } from './models/statistique';
+import { StatistiquesService } from './services/statistiques.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,8 @@ import { Statistique } from './models/statistique';
 })
 export class AppComponent {
   title = 'angularTest';
-  tabStatistique : Statistique[] = [
-    {
-      id : "fa1f5f40-be3b-11eb-91ec-7f5875ecfb46",
-      titre : "Démographie en France",
-      valeur: "60M",
-    },
-    {
-      id : "2a1r5fo0-be3b-11eb-91ec-75875ectfb46",
-      titre : "Démographie en Espagne",
-      valeur: "50M",
-    }
-  ];
+  ref: StatistiquesService = new StatistiquesService;
+  tabStatistique: Statistique[] = this.ref.liste;
+
+  
 }
