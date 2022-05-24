@@ -12,5 +12,11 @@ export class AppComponent {
   ref: StatistiquesService = new StatistiquesService;
   tabStatistique: Statistique[] = this.ref.liste;
 
+  supprimerStat(unStat : Statistique) {
+    let positionStat = this.tabStatistique.indexOf(unStat);
+    if (positionStat != -1) {
+      this.tabStatistique.splice(positionStat, 1);
+    }
+  }
   
 }
