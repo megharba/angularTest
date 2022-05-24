@@ -1,5 +1,13 @@
 export type Statistique = {
+    valeur: string,
     id : string,
-    titre : string,
-    valeur: string, 
+    updatedAt:number,
+    titre : string
+  }
+
+  export type StatistiqueAPI = {
+    value: string,
+    id : string,
+    updatedAt:number,
+    title : string
   }

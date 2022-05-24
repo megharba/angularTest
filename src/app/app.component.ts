@@ -9,13 +9,15 @@ import { StatistiquesService } from './services/statistiques.service';
 })
 export class AppComponent {
   title = 'angularTest';
-  ref: StatistiquesService = new StatistiquesService;
-  tabStatistique: Statistique[] = this.ref.liste;
-
+  ref: StatistiquesService ;
+  
+  constructor(ref :StatistiquesService){
+    this.ref=ref
+  }
   supprimerStat(unStat : Statistique) {
-    let positionStat = this.tabStatistique.indexOf(unStat);
+    let positionStat = this.ref.liste.indexOf(unStat);
     if (positionStat != -1) {
-      this.tabStatistique.splice(positionStat, 1);
+      this.ref.liste.splice(positionStat, 1);
     }
   }
   

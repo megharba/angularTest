@@ -1,27 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Statistique } from '../models/statistique';
+import { Statistique, StatistiqueAPI } from '../models/statistique';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatistiquesService {
-  liste : Statistique[] = [
-    {
-      id : "fa1f5f40-be3b-11eb-91ec-7f5875ecfb46",
-      titre : "Démographie en France",
-      valeur: "60M",
-    },
-    {
-      id : "2a1r5fo0-be3b-11eb-91ec-75875ectfb46",
-      titre : "Démographie en Espagne",
-      valeur: "50M",
-    },
-    {
-      id : "2a1r5fo0-be3b-11eb-91ec-7rst5ectfb46",
-      titre : "Démographie en Italie",
-      valeur: "78M",
-    }
+  liste : Statistique[] = [];
 
-  ];
-  constructor() { }
+  constructor(private http : HttpClient) {
+    
+    this.http.get<StatistiqueAPI[]>('https://stats.naminilamy.fr').subscribe(
+      res =>{
+        for(const s of res){
+          this.liste.push({
+            valeur: s.value,
+            id : s.id,
+            updatedAt: s.updatedAt,
+            titre : s.title,
+          })
+
+        }       
+      }
+    )
+
+    console.log(this.liste)
+  }
+   
+
+
+
 }

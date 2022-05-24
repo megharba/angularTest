@@ -1,6 +1,6 @@
 
 <router-outlet>
-  <ng-container *ngFor="let v of tabStatistique">
+  <ng-container *ngFor="let v of ref.liste">
 
     <app-statistique [unStat]="v" 
     (demandeSuppression)="supprimerStat(v)"
