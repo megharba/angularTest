@@ -1,12 +1,5 @@
+<app-header></app-header>
 
 <router-outlet>
-  <ng-container *ngFor="let v of ref.liste">
 
-    <app-statistique [unStat]="v" 
-    (demandeSuppression)="supprimerStat(v)"
-    >
-      
-    </app-statistique> 
-
-  </ng-container>
 </router-outlet>

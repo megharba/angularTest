@@ -19,11 +19,9 @@ export class StatistiquesService {
             updatedAt: s.updatedAt,
             titre : s.title,
           })
-
         }       
       }
     )
-
     console.log(this.liste)
   }
    
